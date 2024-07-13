@@ -11,6 +11,7 @@ namespace OrderManagement.Infrastructure.Service
     {
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
+            //services.AddScoped<ISeedDataRepository, SeedDataRepository>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             return services;
