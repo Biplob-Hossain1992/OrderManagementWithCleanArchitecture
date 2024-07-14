@@ -2,11 +2,6 @@
 using OrderManagement.Application.Interfaces.IServices;
 using OrderManagement.Application.ViewModel;
 using OrderManagement.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderManagement.Application.Services
 {
@@ -22,7 +17,7 @@ namespace OrderManagement.Application.Services
             var response =  await _orderRepository.CreateOrder(vm);
             return response;
         }
-        public async Task<Order> GetById(int id)
+        public async Task<List<VmOrderItem>> GetById(int id)
         {
             var response = await _orderRepository.GetById(id);
             return response;

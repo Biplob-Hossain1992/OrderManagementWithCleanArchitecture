@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrderManagement.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,6 @@ namespace OrderManagement.Application.ViewModel
         public int Quantity { get; set; }
         public decimal Amount { get; set; }
         public string Remarks { get; set; }
+        public List<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
     }
 }

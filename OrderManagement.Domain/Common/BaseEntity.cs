@@ -10,6 +10,6 @@ namespace OrderManagement.Domain.Common
     public abstract class BaseEntity<TKey> : IHasKey<TKey>
     {
         [Key]
-        public required TKey Id { get; set; }
+        public TKey Id { get; set; }
     }
 }

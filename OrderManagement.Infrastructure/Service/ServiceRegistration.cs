@@ -14,6 +14,10 @@ namespace OrderManagement.Infrastructure.Service
             //services.AddScoped<ISeedDataRepository, SeedDataRepository>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IItemService, ItemService>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
             return services;
         }
     }

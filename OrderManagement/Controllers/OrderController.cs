@@ -19,18 +19,28 @@ namespace OrderManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<VmResponseMessage>> CreateOrder(VmOrder vm)
         {
+            //var list = new List<OrderItem>();
             //var model = new VmOrder
             //{
             //    ReferenceId = 001,
             //    OrderNo = "1001",
-            //    OrderDate = DateTime.Now.ToString(),
+            //    OrderDateString = DateTime.Now.ToString(),
             //    SupplierId = 1,
-            //    ExpectedDate = DateTime.Now.ToString(),
-            //    ItemId = 1,
-            //    Quantity = 10,
-            //    Amount = 1200,
+            //    ExpectedDateString = DateTime.Now.ToString(),
             //    Remarks = "Create Order"
             //};
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    var orderItem = new OrderItem
+            //    {
+            //        OrderId = 1,
+            //        ItemId = i + 1,
+            //        Quantity = 5 + i,
+            //        Rate = 12 + i
+            //    };
+            //    list.Add(orderItem);
+            //}
+            //model.OrderItem = list;
             return Ok(await _orderService.CreateOrder(vm));
         }
         [Route("GetById")]
@@ -49,6 +59,28 @@ namespace OrderManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<VmResponseMessage>> UpdateOrder(VmOrder vm)
         {
+            //var list = new List<OrderItem>();
+            //var model = new VmOrder
+            //{
+            //    Id = 2,
+            //    OrderNo = "1002",
+            //    OrderDateString = DateTime.Now.AddDays(1).ToString(),
+            //    SupplierId = 1,
+            //    ExpectedDateString = DateTime.Now.AddDays(1).ToString(),
+            //    Remarks = "Update Order"
+            //};
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    var orderItem = new OrderItem
+            //    {
+            //        OrderId = 2,
+            //        ItemId = i + 2,
+            //        Quantity = 15 + i,
+            //        Rate = 100 + i
+            //    };
+            //    list.Add(orderItem);
+            //}
+            //model.OrderItem = list;
             return Ok(await _orderService.UpdateOrder(vm));
         }
         [Route("RemoveOrder")]

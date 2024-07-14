@@ -1,7 +1,5 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using OrderManagement.Application.Interfaces.IRepositories;
-using OrderManagement.Infrastructure.Repositories;
 using OrderManagement.Infrastructure.Service;
 using System.Data;
 
