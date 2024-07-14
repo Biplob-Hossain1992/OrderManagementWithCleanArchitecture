@@ -11,13 +11,13 @@ namespace OrderManagement.Infrastructure.Service
     {
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddScoped<ISeedDataRepository, SeedDataRepository>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<DatabaseSeeder>();
             return services;
         }
     }

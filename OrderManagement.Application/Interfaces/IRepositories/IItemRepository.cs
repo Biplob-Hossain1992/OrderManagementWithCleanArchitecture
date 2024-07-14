@@ -1,4 +1,5 @@
-﻿using OrderManagement.Domain.Entities;
+﻿using OrderManagement.Application.ViewModel;
+using OrderManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace OrderManagement.Application.Interfaces.IRepositories
     public interface IItemRepository
     {
         Task<List<Item>> GetAllItem();
+        Task<VmResponseMessage> CreateItem(VmItem vm);
     }
 }

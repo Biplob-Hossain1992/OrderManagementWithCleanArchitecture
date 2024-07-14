@@ -7,10 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 //ConnectionString
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"));
-//});
 builder.Services.AddTransient<IDbConnection>(options => new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 // Add services to the container.
@@ -23,6 +19,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+//Seed Data
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var databaseSeeder = serviceProvider.GetRequiredService<DatabaseSeeder>();
+    await databaseSeeder.SeedDatabaseAsync();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -34,8 +38,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Order}/{action=index}/{id?}");
+app.MapControllers();
 
 app.Run();
