@@ -19,7 +19,7 @@ namespace OrderManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<VmResponseMessage>> CreateOrder(VmOrder vm)
         {
-            //var list = new List<OrderItem>();
+            //var list = new List<VmTableValuedParameter>();
             //var model = new VmOrder
             //{
             //    ReferenceId = 001,
@@ -31,7 +31,7 @@ namespace OrderManagement.Controllers
             //};
             //for (int i = 0; i < 3; i++)
             //{
-            //    var orderItem = new OrderItem
+            //    var orderItem = new VmTableValuedParameter
             //    {
             //        OrderId = 1,
             //        ItemId = i + 1,
@@ -59,7 +59,7 @@ namespace OrderManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<VmResponseMessage>> UpdateOrder(VmOrder vm)
         {
-            //var list = new List<OrderItem>();
+            //var list = new List<VmTableValuedParameter>();
             //var model = new VmOrder
             //{
             //    Id = 2,
@@ -71,7 +71,7 @@ namespace OrderManagement.Controllers
             //};
             //for (int i = 0; i < 3; i++)
             //{
-            //    var orderItem = new OrderItem
+            //    var orderItem = new VmTableValuedParameter
             //    {
             //        OrderId = 2,
             //        ItemId = i + 2,

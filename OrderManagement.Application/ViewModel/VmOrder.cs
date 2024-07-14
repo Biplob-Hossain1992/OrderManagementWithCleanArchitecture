@@ -24,6 +24,6 @@ namespace OrderManagement.Application.ViewModel
         public int Quantity { get; set; }
         public decimal Amount { get; set; }
         public string Remarks { get; set; }
-        public List<OrderItem> OrderItem { get; set; } = new List<OrderItem>();
+        public List<VmTableValuedParameter> OrderItem { get; set; } = new List<VmTableValuedParameter>();
     }
 }
