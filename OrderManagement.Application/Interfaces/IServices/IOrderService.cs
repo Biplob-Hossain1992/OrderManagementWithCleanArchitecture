@@ -1,5 +1,4 @@
 ﻿using OrderManagement.Application.ViewModel;
-using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.Application.Interfaces.IServices
 {

@@ -24,7 +24,7 @@ using (var scope = app.Services.CreateScope())
 {
     var serviceProvider = scope.ServiceProvider;
     var databaseSeeder = serviceProvider.GetRequiredService<DatabaseSeeder>();
-    await databaseSeeder.SeedDatabaseAsync();
+    //await databaseSeeder.SeedDatabaseAsync();
 }
 
 // Configure the HTTP request pipeline.
@@ -35,6 +35,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAllOrigin");
+
+app.Use(async (context, next) =>
+{
+    var origin = context.Request.Headers["Origin"].ToString();
+    var allowOrigin = !string.IsNullOrWhiteSpace(origin) ? origin : "'*'";
+    context.Response.Headers.Add("Access-Control-Allow-Origin", allowOrigin);
+    await next();
+});
 
 app.UseAuthorization();
 

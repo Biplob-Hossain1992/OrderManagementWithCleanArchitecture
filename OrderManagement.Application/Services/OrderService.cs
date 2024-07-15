@@ -1,7 +1,6 @@
 ﻿using OrderManagement.Application.Interfaces.IRepositories;
 using OrderManagement.Application.Interfaces.IServices;
 using OrderManagement.Application.ViewModel;
-using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.Application.Services
 {
