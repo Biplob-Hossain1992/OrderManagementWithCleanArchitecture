@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Application.Interfaces.IServices;
-using OrderManagement.Application.Services;
-using OrderManagement.Application.ViewModel;
+using OrderManagement.Domain.Entities;
 
 namespace OrderManagement.Controllers
 {
@@ -17,7 +15,7 @@ namespace OrderManagement.Controllers
         }
         [Route("GetAllSupplier")]
         [HttpGet]
-        public async Task<ActionResult<List<VmOrder>>> GetAllSupplier()
+        public async Task<ActionResult<List<Supplier>>> GetAllSupplier()
         {
             return Ok(await _supplierService.GetAllSupplier());
         }
