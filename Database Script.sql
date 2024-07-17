@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [OrderManagement]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Database [OrderManagement]    Script Date: 7/18/2024 12:00:33 AM ******/
 CREATE DATABASE [OrderManagement]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,16 +84,16 @@ ALTER DATABASE [OrderManagement] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, C
 GO
 USE [OrderManagement]
 GO
-/****** Object:  Schema [Item]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Schema [Item]    Script Date: 7/18/2024 12:00:33 AM ******/
 CREATE SCHEMA [Item]
 GO
-/****** Object:  Schema [Order]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Schema [Order]    Script Date: 7/18/2024 12:00:33 AM ******/
 CREATE SCHEMA [Order]
 GO
-/****** Object:  Schema [Supplier]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Schema [Supplier]    Script Date: 7/18/2024 12:00:33 AM ******/
 CREATE SCHEMA [Supplier]
 GO
-/****** Object:  UserDefinedTableType [Order].[OrderItems]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  UserDefinedTableType [Order].[OrderItems]    Script Date: 7/18/2024 12:00:33 AM ******/
 CREATE TYPE [Order].[OrderItems] AS TABLE(
 	[OrderId] [int] NOT NULL,
 	[ItemId] [int] NOT NULL,
@@ -101,7 +101,7 @@ CREATE TYPE [Order].[OrderItems] AS TABLE(
 	[Rate] [decimal](18, 2) NOT NULL
 )
 GO
-/****** Object:  Table [Item].[Item]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Table [Item].[Item]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [Item].[Item](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [Order].[Order]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Table [Order].[Order]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ GO
 CREATE TABLE [Order].[Order](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[ReferenceId] [int] NOT NULL,
-	[OrderNo] [nvarchar](max) NOT NULL,
+	[OrderNo] [nvarchar](50) NOT NULL,
 	[OrderDate] [datetime2](7) NOT NULL,
 	[SupplierId] [int] NOT NULL,
 	[ExpectedDate] [datetime2](7) NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE [Order].[Order](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [Order].[OrderItem]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Table [Order].[OrderItem]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [Order].[OrderItem](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [Supplier].[Supplier]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  Table [Supplier].[Supplier]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -170,17 +170,21 @@ CREATE TABLE [Supplier].[Supplier](
 GO
 SET IDENTITY_INSERT [Item].[Item] ON 
 GO
-INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (1, N'A', CAST(12.00 AS Decimal(18, 2)))
+INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (1, N'Samsung Galaxy S23 Ultra', CAST(150000.00 AS Decimal(18, 2)))
 GO
-INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (2, N'B', CAST(12.00 AS Decimal(18, 2)))
+INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (2, N'iPhone 15 Pro Max', CAST(164000.00 AS Decimal(18, 2)))
 GO
-INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (3, N'C', CAST(12.00 AS Decimal(18, 2)))
+INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (3, N'Vivo', CAST(85000.00 AS Decimal(18, 2)))
+GO
+INSERT [Item].[Item] ([Id], [Name], [UnitPrice]) VALUES (4, N'Samsung Galaxy A5', CAST(50000.00 AS Decimal(18, 2)))
 GO
 SET IDENTITY_INSERT [Item].[Item] OFF
 GO
 SET IDENTITY_INSERT [Order].[Order] ON 
 GO
-INSERT [Order].[Order] ([Id], [ReferenceId], [OrderNo], [OrderDate], [SupplierId], [ExpectedDate], [Remarks]) VALUES (1, 1, N'1001', CAST(N'2024-07-15T01:11:13.0000000' AS DateTime2), 1, CAST(N'2024-07-15T01:11:13.0000000' AS DateTime2), N'Create Default Order')
+INSERT [Order].[Order] ([Id], [ReferenceId], [OrderNo], [OrderDate], [SupplierId], [ExpectedDate], [Remarks]) VALUES (1, 1, N'1001', CAST(N'2024-07-17T23:12:01.7933333' AS DateTime2), 1, CAST(N'2024-07-17T23:12:01.7933333' AS DateTime2), N'Create Default Order')
+GO
+INSERT [Order].[Order] ([Id], [ReferenceId], [OrderNo], [OrderDate], [SupplierId], [ExpectedDate], [Remarks]) VALUES (2, 1, N'PO1001', CAST(N'2024-07-17T00:00:00.0000000' AS DateTime2), 2, CAST(N'2024-07-17T00:00:00.0000000' AS DateTime2), N'This is my first project using Blazor')
 GO
 SET IDENTITY_INSERT [Order].[Order] OFF
 GO
@@ -192,6 +196,12 @@ INSERT [Order].[OrderItem] ([Id], [OrderId], [ItemId], [Quantity], [Rate]) VALUE
 GO
 INSERT [Order].[OrderItem] ([Id], [OrderId], [ItemId], [Quantity], [Rate]) VALUES (3, 1, 3, 7, CAST(12.00 AS Decimal(18, 2)))
 GO
+INSERT [Order].[OrderItem] ([Id], [OrderId], [ItemId], [Quantity], [Rate]) VALUES (4, 2, 1, 2, CAST(300000.00 AS Decimal(18, 2)))
+GO
+INSERT [Order].[OrderItem] ([Id], [OrderId], [ItemId], [Quantity], [Rate]) VALUES (5, 2, 2, 3, CAST(492000.00 AS Decimal(18, 2)))
+GO
+INSERT [Order].[OrderItem] ([Id], [OrderId], [ItemId], [Quantity], [Rate]) VALUES (6, 2, 3, 2, CAST(170000.00 AS Decimal(18, 2)))
+GO
 SET IDENTITY_INSERT [Order].[OrderItem] OFF
 GO
 SET IDENTITY_INSERT [Supplier].[Supplier] ON 
@@ -202,7 +212,7 @@ INSERT [Supplier].[Supplier] ([Id], [Name], [PhoneNumber], [Address]) VALUES (2,
 GO
 SET IDENTITY_INSERT [Supplier].[Supplier] OFF
 GO
-/****** Object:  StoredProcedure [Item].[USP_CreateItem]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Item].[USP_CreateItem]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -226,7 +236,7 @@ BEGIN
 		(@Name,@UnitPrice)
 END
 GO
-/****** Object:  StoredProcedure [Item].[USP_GetAllItem]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Item].[USP_GetAllItem]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -246,7 +256,7 @@ BEGIN
 		[Item].[Item]
 END
 GO
-/****** Object:  StoredProcedure [Order].[USP_CreateOrder]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Order].[USP_CreateOrder]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -270,40 +280,50 @@ CREATE PROCEDURE [Order].[USP_CreateOrder]
 )
 AS
 BEGIN
-	INSERT INTO [Order].[Order]    
-		(ReferenceId,OrderNo,OrderDate,SupplierId,ExpectedDate,Remarks)    
-	VALUES    
-		(@ReferenceId,@OrderNo,@OrderDate,@SupplierId,@ExpectedDate,@Remarks)
-	INSERT INTO [Order].[OrderItem]
-	SELECT OrderId = Scope_Identity(),ItemId,Quantity,Rate FROM @OrderItem
+	IF EXISTS (SELECT OrderNo FROM [Order].[Order] WHERE OrderNo = @OrderNo) 
+	BEGIN
+	   SELECT 1 
+	END
+	ELSE
+	BEGIN
+		INSERT INTO [Order].[Order]    
+			(ReferenceId,OrderNo,OrderDate,SupplierId,ExpectedDate,Remarks)    
+		VALUES    
+			(@ReferenceId,@OrderNo,@OrderDate,@SupplierId,@ExpectedDate,@Remarks)
+		INSERT INTO [Order].[OrderItem]
+		SELECT OrderId = Scope_Identity(),ItemId,Quantity,Rate FROM @OrderItem
+	END
 END
 GO
-/****** Object:  StoredProcedure [Order].[USP_GetAllOrder]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Order].[USP_GetAllOrder]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-
-
 -- =============================================
 -- Author:		<Author,Biplob Hossain>
 -- Create date: <Create Date,2024-07-13>
 -- Description:	<Description,[Order].[USP_GetAllOrder]>
 -- =============================================
 CREATE PROCEDURE [Order].[USP_GetAllOrder]
-
-AS
+(
+	@SkipRows int = 1,
+	@TakeRows int = 5
+)
+AS        
 BEGIN
 	SELECT
 		O.*,S.[Name] AS SupplierName,S.PhoneNumber,S.[Address]
 	FROM
 		[Order].[Order] AS O
 		INNER JOIN [Supplier].[Supplier] AS S ON S.Id = O.SupplierId
-		--INNER JOIN [Order].[OrderItem] AS OI ON OI.OrderId = O.Id
-		--INNER JOIN [Item].[Item] AS I ON I.Id = OI.ItemId
+	ORDER BY
+			O.Id
+	OFFSET @SkipRows ROWS
+	FETCH NEXT @TakeRows ROWS ONLY;
 END
 GO
-/****** Object:  StoredProcedure [Order].[USP_GetById]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Order].[USP_GetById]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -329,7 +349,7 @@ BEGIN
 		OrderId = @Id
 END
 GO
-/****** Object:  StoredProcedure [Order].[USP_RemoveOrder]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Order].[USP_RemoveOrder]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -357,7 +377,7 @@ BEGIN
 		OrderId = @Id
 END
 GO
-/****** Object:  StoredProcedure [Order].[USP_UpdateOrder]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Order].[USP_UpdateOrder]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -403,7 +423,7 @@ BEGIN
 END
 
 GO
-/****** Object:  StoredProcedure [Supplier].[USP_CreateSupplier]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Supplier].[USP_CreateSupplier]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -422,13 +442,20 @@ CREATE PROCEDURE [Supplier].[USP_CreateSupplier]
 )
 AS
 BEGIN
-	INSERT INTO [Supplier].[Supplier]  
-		([Name],PhoneNumber,[Address])    
-	VALUES    
-		(@Name,@PhoneNumber,@Address)
+	IF EXISTS (SELECT PhoneNumber FROM [Supplier].[Supplier] WHERE PhoneNumber = @PhoneNumber) 
+		BEGIN
+		   SELECT 1 
+		END
+		ELSE
+		BEGIN
+			INSERT INTO [Supplier].[Supplier]  
+				([Name],PhoneNumber,[Address])    
+			VALUES    
+				(@Name,@PhoneNumber,@Address)
+		END
 END
 GO
-/****** Object:  StoredProcedure [Supplier].[USP_GetAllSupplier]    Script Date: 7/15/2024 1:19:13 AM ******/
+/****** Object:  StoredProcedure [Supplier].[USP_GetAllSupplier]    Script Date: 7/18/2024 12:00:33 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
