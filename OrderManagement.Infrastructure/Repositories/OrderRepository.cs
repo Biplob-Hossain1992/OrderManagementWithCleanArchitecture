@@ -20,9 +20,9 @@ namespace OrderManagement.Infrastructure.Repositories
             var parameter = new DynamicParameters();
             parameter.Add("@ReferenceId", vm.ReferenceId, DbType.Int32);
             parameter.Add("@OrderNo", vm.OrderNo, DbType.String);
-            parameter.Add("@OrderDate", vm.OrderDateString, DbType.DateTime);
+            parameter.Add("@OrderDate", vm.OrderDate, DbType.DateTime);
             parameter.Add("@SupplierId", vm.SupplierId, DbType.Int32);
-            parameter.Add("@ExpectedDate", vm.ExpectedDateString, DbType.DateTime);
+            parameter.Add("@ExpectedDate", vm.ExpectedDate, DbType.DateTime);
             parameter.Add("@Remarks", vm.Remarks, DbType.String);
             parameter.Add("@OrderItem", dataTable.AsTableValuedParameter("[Order].[OrderItems]")); //added order items as parameter
 
@@ -53,9 +53,9 @@ namespace OrderManagement.Infrastructure.Repositories
             var parameter = new DynamicParameters();
             parameter.Add("@Id", vm.Id, DbType.Int32);
             parameter.Add("@OrderNo", vm.OrderNo, DbType.String);
-            parameter.Add("@OrderDate", vm.OrderDateString, DbType.DateTime);
+            parameter.Add("@OrderDate", vm.OrderDate, DbType.DateTime);
             parameter.Add("@SupplierId", vm.SupplierId, DbType.Int32);
-            parameter.Add("@ExpectedDate", vm.ExpectedDateString, DbType.DateTime);
+            parameter.Add("@ExpectedDate", vm.ExpectedDate, DbType.DateTime);
             parameter.Add("@Remarks", vm.Remarks, DbType.String);
             parameter.Add("@OrderItem", dataTable.AsTableValuedParameter("[Order].[OrderItems]")); //added order items as parameter
 

@@ -17,6 +17,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+    });
+});
+
 var app = builder.Build();
 
 //Seed Data
@@ -36,15 +44,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAllOrigin");
+app.UseCors("CorsPolicy");
 
-app.Use(async (context, next) =>
-{
-    var origin = context.Request.Headers["Origin"].ToString();
-    var allowOrigin = !string.IsNullOrWhiteSpace(origin) ? origin : "'*'";
-    context.Response.Headers.Add("Access-Control-Allow-Origin", allowOrigin);
-    await next();
-});
+//app.UseCors("AllowAllOrigin");
+
+//app.Use(async (context, next) =>
+//{
+//    var origin = context.Request.Headers["Origin"].ToString();
+//    var allowOrigin = !string.IsNullOrWhiteSpace(origin) ? origin : "'*'";
+//    context.Response.Headers.Add("Access-Control-Allow-Origin", allowOrigin);
+//    await next();
+//});
 
 app.UseAuthorization();
 
