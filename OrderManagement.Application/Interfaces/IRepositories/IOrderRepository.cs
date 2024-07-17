@@ -7,7 +7,7 @@ namespace OrderManagement.Application.Interfaces.IRepositories
     {
         Task<VmResponseMessage> CreateOrder(VmOrder vm);
         Task<List<VmOrderItem>> GetById(int id);
-        Task<List<VmOrder>> GetAllOrder();
+        Task<List<VmOrder>> GetAllOrder(int CurPage, int TakeRows);
         Task<VmResponseMessage> UpdateOrder(VmOrder vm);
         Task<VmResponseMessage> RemoveOrder(int id);
     }

@@ -11,7 +11,7 @@ namespace OrderManagement.Domain.Entities
         public int ReferenceId { get; set; }
         public string OrderNo { get; set; } = string.Empty;
         public DateTime OrderDate { get; set; }
-        public int SupplierId { get; set; }
+        public int SupplierId { get; set; } // Removed foreign key relation. if you want could keep FK Relation
         public DateTime ExpectedDate { get; set; }
         public string Remarks { get; set; } = string.Empty;
     }

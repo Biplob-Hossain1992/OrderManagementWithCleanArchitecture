@@ -26,11 +26,11 @@ namespace OrderManagement.Controllers
         {
             return Ok(await _orderService.GetById(id));
         }
-        [Route("GetAllOrder")]
+        [Route("GetAllOrder/{CurPage}/{TakeRows}")]
         [HttpGet]
-        public async Task<ActionResult<List<VmOrder>>> GetAllOrder()
+        public async Task<ActionResult<List<VmOrder>>> GetAllOrder(int CurPage, int TakeRows)
         {
-            return Ok(await _orderService.GetAllOrder());
+            return Ok(await _orderService.GetAllOrder(CurPage, TakeRows));
         }
         [Route("UpdateOrder")]
         [HttpPost]

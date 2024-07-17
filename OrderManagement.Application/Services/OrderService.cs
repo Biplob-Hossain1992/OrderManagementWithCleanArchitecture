@@ -21,9 +21,9 @@ namespace OrderManagement.Application.Services
             var response = await _orderRepository.GetById(id);
             return response;
         }
-        public async Task<List<VmOrder>> GetAllOrder()
+        public async Task<List<VmOrder>> GetAllOrder(int CurPage, int TakeRows)
         {
-            var response = await _orderRepository.GetAllOrder();
+            var response = await _orderRepository.GetAllOrder(CurPage, TakeRows);
             //set if any business logic
             return response;
         }

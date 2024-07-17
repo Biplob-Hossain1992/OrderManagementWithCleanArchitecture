@@ -8,8 +8,8 @@ namespace OrderManagement.Domain.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int OrderId { get; set; }
-        public int ItemId { get; set; }
+        public int OrderId { get; set; } // Removed foreign key relation. if you want could keep FK Relation
+        public int ItemId { get; set; } // Removed foreign key relation. if you want could keep FK Relation
         public int Quantity { get; set; }
         public decimal Rate { get; set; }
     }

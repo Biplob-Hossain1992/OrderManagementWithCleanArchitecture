@@ -41,9 +41,12 @@ namespace OrderManagement.Infrastructure.Repositories
             var data = await _dbContext.QueryAsync<VmOrderItem>("[Order].[USP_GetById]", paramerter, commandType: CommandType.StoredProcedure);
             return data.ToList();
         }
-        public async Task<List<VmOrder>> GetAllOrder()
+        public async Task<List<VmOrder>> GetAllOrder(int CurPage, int TakeRows)
         {
-            var data = await _dbContext.QueryAsync<VmOrder>("[Order].[USP_GetAllOrder]", null, commandType: CommandType.StoredProcedure);
+            var paramerter = new DynamicParameters();
+            paramerter.Add("@SkipRows", CurPage, DbType.Int32);
+            paramerter.Add("@TakeRows", TakeRows, DbType.Int32);
+            var data = await _dbContext.QueryAsync<VmOrder>("[Order].[USP_GetAllOrder]", paramerter, commandType: CommandType.StoredProcedure);
             return data.ToList();
         }
         public async Task<VmResponseMessage> UpdateOrder(VmOrder vm)

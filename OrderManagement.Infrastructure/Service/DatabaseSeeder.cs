@@ -22,9 +22,9 @@ namespace OrderManagement.Infrastructure.Service
             {
                 ReferenceId = 001,
                 OrderNo = "1001",
-                OrderDateString = DateTime.Now.ToString(),
+                OrderDate = DateTime.Now,
                 SupplierId = 1,
-                ExpectedDateString = DateTime.Now.ToString(),
+                ExpectedDate = DateTime.Now,
                 Remarks = "Create Default Order"
             };
             for (int i = 0; i < 3; i++)
